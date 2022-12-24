@@ -1,0 +1,291 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="QL_Diem_HVQLGD" Class="Database_QLDDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=DELL-392\SQLHUY;Initial Catalog=QL_Diem_HVQLGD;Integrated Security=True" SettingsObjectName="QL_Diem_BTL.Properties.Settings" SettingsPropertyName="QL_Diem_HVQLGDConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Diem" Member="Diems">
+    <Type Name="Diem">
+      <Column Name="MaMH" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="MaSV" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Hovaten" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="DiemCC" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DiemGiuaHP" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DiemThi" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DiemTB" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="DiemChu" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Association Name="MonHoc_Diem" Member="MonHoc" ThisKey="MaMH" OtherKey="MaMH" Type="MonHoc" IsForeignKey="true" />
+      <Association Name="SinhVien_Diem" Member="SinhVien" ThisKey="MaSV" OtherKey="MaSV" Type="SinhVien" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.HocKy" Member="HocKies">
+    <Type Name="HocKy">
+      <Column Name="MaHK" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="TenHK" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Association Name="HocKy_MonHoc" Member="MonHocs" ThisKey="MaHK" OtherKey="MaHK" Type="MonHoc" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Khoa" Member="Khoas">
+    <Type Name="Khoa">
+      <Column Name="MaKhoa" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="TenKhoa" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="Khoa_Lop" Member="Lops" ThisKey="MaKhoa" OtherKey="MaKhoa" Type="Lop" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Lop" Member="Lops">
+    <Type Name="Lop">
+      <Column Name="MaLop" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="TenLop" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="MaKhoa" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="Lop_SinhVien" Member="SinhViens" ThisKey="MaLop" OtherKey="MaLop" Type="SinhVien" />
+      <Association Name="Khoa_Lop" Member="Khoa" ThisKey="MaKhoa" OtherKey="MaKhoa" Type="Khoa" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.MonHoc" Member="MonHocs">
+    <Type Name="MonHoc">
+      <Column Name="MaMH" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="TenMH" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="SoTinChi" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="SoTiet" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="MaHK" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="MonHoc_Diem" Member="Diems" ThisKey="MaMH" OtherKey="MaMH" Type="Diem" />
+      <Association Name="HocKy_MonHoc" Member="HocKy" ThisKey="MaHK" OtherKey="MaHK" Type="HocKy" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SinhVien" Member="SinhViens">
+    <Type Name="SinhVien">
+      <Column Name="MaSV" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Hovaten" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="NgaySinh" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="GioiTinh" Type="System.String" DbType="NVarChar(5)" CanBeNull="true" />
+      <Column Name="NoiSinh" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="QueQuan" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="DanToc" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SDT" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="MaLop" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="GhiChu" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Association Name="SinhVien_Diem" Member="Diems" ThisKey="MaSV" OtherKey="MaSV" Type="Diem" />
+      <Association Name="Lop_SinhVien" Member="Lop" ThisKey="MaLop" OtherKey="MaLop" Type="Lop" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Function Name="dbo.Delete_Khoa" Method="Delete_Khoa">
+    <Parameter Name="MaKhoa" Parameter="maKhoa" Type="System.String" DbType="NVarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.Delete_Lop" Method="Delete_Lop">
+    <Parameter Name="MaLop" Parameter="maLop" Type="System.String" DbType="NVarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.Insert_Khoa" Method="Insert_Khoa">
+    <Parameter Name="MaKhoa" Parameter="maKhoa" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="TenKhoa" Parameter="tenKhoa" Type="System.String" DbType="NVarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SelectAll_Khoa" Method="SelectAll_Khoa">
+    <ElementType Name="SelectAll_KhoaResult">
+      <Column Name="MaKhoa" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="TenKhoa" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.Update_Khoa" Method="Update_Khoa">
+    <Parameter Name="MaKhoa" Parameter="maKhoa" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="TenKhoa" Parameter="tenKhoa" Type="System.String" DbType="NVarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SelectAll_Lop" Method="SelectAll_Lop">
+    <Parameter Name="MaKhoa" Parameter="maKhoa" Type="System.String" DbType="NVarChar(50)" />
+    <ElementType Name="SelectAll_LopResult">
+      <Column Name="MaLop" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="TenLop" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="MaKhoa" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.Delete_MonHoc" Method="Delete_MonHoc">
+    <Parameter Name="MaMH" Parameter="maMH" Type="System.String" DbType="NVarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.Update_MonHoc" Method="Update_MonHoc">
+    <Parameter Name="MaMH" Parameter="maMH" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="TenMH" Parameter="tenMH" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="SoTinChi" Parameter="soTinChi" Type="System.Decimal" DbType="Decimal(18,0)" />
+    <Parameter Name="SoTiet" Parameter="soTiet" Type="System.Decimal" DbType="Decimal(18,0)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.Insert_Lop" Method="Insert_Lop">
+    <Parameter Name="MaLop" Parameter="maLop" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="TenLop" Parameter="tenLop" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="MaKhoa" Parameter="maKhoa" Type="System.String" DbType="NVarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.Update_Lop" Method="Update_Lop">
+    <Parameter Name="MaLop" Parameter="maLop" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="TenLop" Parameter="tenLop" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="MaKhoa" Parameter="maKhoa" Type="System.String" DbType="NVarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.Delete_Sinhvien" Method="Delete_Sinhvien">
+    <Parameter Name="MaSV" Parameter="maSV" Type="System.String" DbType="NVarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.Update_Sinhvien" Method="Update_Sinhvien">
+    <Parameter Name="MaSV" Parameter="maSV" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="Hovaten" Parameter="hovaten" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="NgaySinh" Parameter="ngaySinh" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="GioiTinh" Parameter="gioiTinh" Type="System.String" DbType="NVarChar(5)" />
+    <Parameter Name="NoiSinh" Parameter="noiSinh" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="QueQuan" Parameter="queQuan" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="DanToc" Parameter="danToc" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="SDT" Parameter="sDT" Type="System.String" DbType="VarChar(30)" />
+    <Parameter Name="GhiChu" Parameter="ghiChu" Type="System.String" DbType="NText" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.Insert_Sinhvien" Method="Insert_Sinhvien">
+    <Parameter Name="MaSV" Parameter="maSV" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="Hovaten" Parameter="hovaten" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="NgaySinh" Parameter="ngaySinh" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="GioiTinh" Parameter="gioiTinh" Type="System.String" DbType="NVarChar(5)" />
+    <Parameter Name="NoiSinh" Parameter="noiSinh" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="QueQuan" Parameter="queQuan" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="DanToc" Parameter="danToc" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="SDT" Parameter="sDT" Type="System.String" DbType="VarChar(30)" />
+    <Parameter Name="MaLop" Parameter="maLop" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="GhiChu" Parameter="ghiChu" Type="System.String" DbType="NVarChar(100)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SinhVien_SelectMaLop" Method="SinhVien_SelectMaLop">
+    <Parameter Name="Malop" Parameter="malop" Type="System.String" DbType="NVarChar(50)" />
+    <ElementType Name="SinhVien_SelectMaLopResult">
+      <Column Name="MaSV" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Hovaten" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="NgaySinh" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="GioiTinh" Type="System.String" DbType="NVarChar(5)" CanBeNull="true" />
+      <Column Name="NoiSinh" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="QueQuan" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="DanToc" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SDT" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="GhiChu" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SelectAll_MonHoc" Method="SelectAll_MonHoc">
+    <ElementType Name="SelectAll_MonHocResult">
+      <Column Name="MaMH" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="TenMH" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="SoTinChi" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="SoTiet" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.MonHoc_SelectMaHK" Method="MonHoc_SelectMaHK">
+    <Parameter Name="MaHK" Parameter="maHK" Type="System.String" DbType="NVarChar(50)" />
+    <ElementType Name="MonHoc_SelectMaHKResult">
+      <Column Name="MaMH" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="TenMH" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="SoTinChi" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="SoTiet" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="MaHK" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="MaKhoa" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.Delete_Hocky" Method="Delete_Hocky">
+    <Parameter Name="MaHK" Parameter="maHK" Type="System.String" DbType="NVarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.Insert_Hocky" Method="Insert_Hocky">
+    <Parameter Name="MaHK" Parameter="maHK" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="TenHK" Parameter="tenHK" Type="System.String" DbType="NVarChar(20)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SelectAll_Hocky" Method="SelectAll_Hocky">
+    <ElementType Name="SelectAll_HockyResult">
+      <Column Name="MaHK" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="TenHK" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.Update_Hocky" Method="Update_Hocky">
+    <Parameter Name="MaHK" Parameter="maHK" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="TenHK" Parameter="tenHK" Type="System.String" DbType="NVarChar(20)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.Insert_Diem" Method="Insert_Diem">
+    <Parameter Name="MaMH" Parameter="maMH" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="MaSV" Parameter="maSV" Type="System.String" DbType="NVarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SelectAll_SinhVien" Method="SelectAll_SinhVien">
+    <ElementType Name="SelectAll_SinhVienResult">
+      <Column Name="MaSV" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Hovaten" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="NgaySinh" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="GioiTinh" Type="System.String" DbType="NVarChar(5)" CanBeNull="true" />
+      <Column Name="NoiSinh" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="QueQuan" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="DanToc" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SDT" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="MaLop" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="GhiChu" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.BangDiem" Method="BangDiem">
+    <Parameter Name="MaLop" Parameter="maLop" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="MaMonHoc" Parameter="maMonHoc" Type="System.String" DbType="NVarChar(50)" />
+    <ElementType Name="BangDiemResult">
+      <Column Name="MaSV" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Hovaten" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="NgaySinh" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="DiemCC" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="DiemGiuaHP" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="DiemThi" Type="System.Double" DbType="Float" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.Diem_UpdateDiemCC" Method="Diem_UpdateDiemCC">
+    <Parameter Name="DiemCC" Parameter="diemCC" Type="System.Double" DbType="Float" />
+    <Parameter Name="MaMonHoc" Parameter="maMonHoc" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="MaSV" Parameter="maSV" Type="System.String" DbType="NVarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.Diem_UpdateDiemGiuaHP" Method="Diem_UpdateDiemGiuaHP">
+    <Parameter Name="DiemGHP" Parameter="diemGHP" Type="System.Double" DbType="Float" />
+    <Parameter Name="MaMonHoc" Parameter="maMonHoc" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="MaSV" Parameter="maSV" Type="System.String" DbType="NVarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.Diem_UpdateDiemThi" Method="Diem_UpdateDiemThi">
+    <Parameter Name="DiemThi" Parameter="diemThi" Type="System.Double" DbType="Float" />
+    <Parameter Name="MaMonHoc" Parameter="maMonHoc" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="MaSV" Parameter="maSV" Type="System.String" DbType="NVarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SinhVien_SelectID" Method="SinhVien_SelectID">
+    <Parameter Name="MaSV" Parameter="maSV" Type="System.String" DbType="NVarChar(50)" />
+    <ElementType Name="SinhVien_SelectIDResult">
+      <Column Name="MaSV" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Hovaten" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="NgaySinh" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="GioiTinh" Type="System.String" DbType="NVarChar(5)" CanBeNull="true" />
+      <Column Name="NoiSinh" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="QueQuan" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="DanToc" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SDT" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="MaLop" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="GhiChu" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.Search_Diem" Method="Search_Diem">
+    <Parameter Name="MaMH" Parameter="maMH" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="MaSV" Parameter="maSV" Type="System.String" DbType="NVarChar(50)" />
+    <ElementType Name="Search_DiemResult">
+      <Column Name="MaMH" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="MaSV" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Hovaten" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="DiemCC" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="DiemGiuaHP" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="DiemThi" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ThangDiem4" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="DiemTB" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="DiemChu" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.Insert_MonHoc" Method="Insert_MonHoc">
+    <Parameter Name="MaMH" Parameter="maMH" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="TenMH" Parameter="tenMH" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="SoTinChi" Parameter="soTinChi" Type="System.Decimal" DbType="Decimal(18,0)" />
+    <Parameter Name="SoTiet" Parameter="soTiet" Type="System.Decimal" DbType="Decimal(18,0)" />
+    <Parameter Name="MaHK" Parameter="maHK" Type="System.String" DbType="NVarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+</Database>

@@ -1,0 +1,16 @@
+D:\BTL Lập trình trực quan\Chương trình\QL_Diem_BTL\QL_Diem_BTL\bin\Debug\QL_Diem_BTL.exe.config
+D:\BTL Lập trình trực quan\Chương trình\QL_Diem_BTL\QL_Diem_BTL\bin\Debug\QL_Diem_BTL.exe
+D:\BTL Lập trình trực quan\Chương trình\QL_Diem_BTL\QL_Diem_BTL\bin\Debug\QL_Diem_BTL.pdb
+D:\BTL Lập trình trực quan\Chương trình\QL_Diem_BTL\QL_Diem_BTL\obj\Debug\QL_Diem_BTL.csproj.AssemblyReference.cache
+D:\BTL Lập trình trực quan\Chương trình\QL_Diem_BTL\QL_Diem_BTL\obj\Debug\QL_Diem_BTL.csproj.SuggestedBindingRedirects.cache
+D:\BTL Lập trình trực quan\Chương trình\QL_Diem_BTL\QL_Diem_BTL\obj\Debug\QL_Diem_BTL.Properties.Resources.resources
+D:\BTL Lập trình trực quan\Chương trình\QL_Diem_BTL\QL_Diem_BTL\obj\Debug\QL_Diem_BTL.csproj.GenerateResource.cache
+D:\BTL Lập trình trực quan\Chương trình\QL_Diem_BTL\QL_Diem_BTL\obj\Debug\QL_Diem_BTL.csproj.CoreCompileInputs.cache
+D:\BTL Lập trình trực quan\Chương trình\QL_Diem_BTL\QL_Diem_BTL\obj\Debug\QL_Diem_BTL.exe
+D:\BTL Lập trình trực quan\Chương trình\QL_Diem_BTL\QL_Diem_BTL\obj\Debug\QL_Diem_BTL.pdb
+D:\BTL Lập trình trực quan\Chương trình\QL_Diem_BTL\QL_Diem_BTL\obj\Debug\QL_Diem_BTL.frm_Main.resources
+D:\BTL Lập trình trực quan\Chương trình\QL_Diem_BTL\QL_Diem_BTL\obj\Debug\QL_Diem_BTL.frm_Khoa.resources
+D:\BTL Lập trình trực quan\Chương trình\QL_Diem_BTL\QL_Diem_BTL\obj\Debug\QL_Diem_BTL.frm_Sinhvien.resources
+D:\BTL Lập trình trực quan\Chương trình\QL_Diem_BTL\QL_Diem_BTL\obj\Debug\QL_Diem_BTL.frm_Monhoc.resources
+D:\BTL Lập trình trực quan\Chương trình\QL_Diem_BTL\QL_Diem_BTL\obj\Debug\QL_Diem_BTL.frm_Nhapdiem.resources
+D:\BTL Lập trình trực quan\Chương trình\QL_Diem_BTL\QL_Diem_BTL\obj\Debug\QL_Diem_BTL.frm_Bangdiem.resources
